@@ -1,10 +1,10 @@
 <%- include('layout') %>
 
-<h2><%= task ? 'Edit Task' : 'Create Task' %></h2>
+<h2 class="text-center mb-4 text-white"><%= task ? 'Edit Task' : 'Create Task' %></h2>
 <form
   action="<%= task ? `/tasks/${task._id}?_method=PUT` : '/tasks' %>"
   method="POST"
-  class="mt-4"
+  class="bg-dark text-white p-4 rounded shadow-sm"
 >
   <div class="mb-3">
     <label for="title" class="form-label">Title</label>
@@ -30,5 +30,20 @@
       <option value="completed" <%= task && task.status === 'completed' ? 'selected' : '' %>>Completed</option>
     </select>
   </div>
-  <button type="submit" class="btn btn-primary w-100">Save Task</button>
+  <button type="submit" class="btn btn-register w-100">Save Task</button>
 </form>
+
+<!-- Add the gradient button style for consistency -->
+<style>
+  /* Custom gradient button */
+  .btn-register {
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient color */
+    color: white;
+    border: none;
+    font-weight: bold;
+  }
+  .btn-register:hover {
+    background: linear-gradient(to right, #feb47b, #ff7e5f); /* Reversed gradient on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+</style>
